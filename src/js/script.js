@@ -1,13 +1,18 @@
 import { catsData } from "./data.js";
 
-const radioParent = document.getElementById("emotion-radios")
-const radioBtns = document.getElementsByClassName("radio")
+const radioItem = document.getElementById("emotion-radios")
 
+radioItem.addEventListener("change", (e) => {
+    const radios = document.getElementsByClassName("radio")
+    for(let radio of radios) {
+        radio.classList.remove("highlight")
+    }
+    document.getElementById(e.target.id).parentElement.classList.add("highlight")
+})
 
-
-function getEmotionsArray() {
+function getEmotionsArray(cats) {
     const emotionsArray = []
-    for(let cat of catsData) {
+    for(let cat of cats) {
         for(let emotion of cat.emotionTags) {
             if(!emotionsArray.includes(emotion)) {
                 emotionsArray.push(emotion)
@@ -17,9 +22,9 @@ function getEmotionsArray() {
     return emotionsArray
 }
 
-function render() {
-    const emotions = getEmotionsArray()
+function render(cats) {
     let parentHtml = ""
+    const emotions = getEmotionsArray(cats)
     for(let emotion of emotions) {
         parentHtml += `
         <div class="radio">
@@ -32,7 +37,7 @@ function render() {
             >
         </div>`
     }
-    radioParent.innerHTML = parentHtml
+    radioItem.innerHTML = parentHtml
 }
 
-render()
+render(catsData)
