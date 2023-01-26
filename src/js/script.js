@@ -1,43 +1,37 @@
-import { catsData } from "./data.js";
+import { travelLocations } from "./data.js";
+const emotionRadios = document.getElementById('emotion-radios')
 
-const radioItem = document.getElementById("emotion-radios")
+// console.log(travelLocations)
 
-radioItem.addEventListener("change", (e) => {
-    const radios = document.getElementsByClassName("radio")
-    for(let radio of radios) {
-        radio.classList.remove("highlight")
-    }
-    document.getElementById(e.target.id).parentElement.classList.add("highlight")
-})
-
-function getEmotionsArray(cats) {
-    const emotionsArray = []
-    for(let cat of cats) {
-        for(let emotion of cat.emotionTags) {
-            if(!emotionsArray.includes(emotion)) {
-                emotionsArray.push(emotion)
+function getWeatherArray(places) {
+    const weatherArray = []
+    for(let place of places) {
+        for(let weather of place.weatherTags) {
+            if(!weatherArray.includes(weather)) {
+                weatherArray.push(weather)
             }
         }
     }
-    return emotionsArray
+    return weatherArray
 }
 
-function render(cats) {
-    let parentHtml = ""
-    const emotions = getEmotionsArray(cats)
-    for(let emotion of emotions) {
-        parentHtml += `
+function render(places) {
+    const destinations = getWeatherArray(places)
+    let radiosEl = ""
+    for(let place of destinations) {
+        radiosEl += `
         <div class="radio">
-            <label for="${emotion}">${emotion}</label>
+            <label for="${place}">${place}</label>
             <input
             type="radio"
-            id="${emotion}"
-            value="${emotion}"
+            id="${place}"
+            value="${place}"
             name="emotions"
             >
-        </div>`
+        </div>
+        `
     }
-    radioItem.innerHTML = parentHtml
+    emotionRadios.innerHTML = radiosEl
 }
 
-render(catsData)
+render(travelLocations)
