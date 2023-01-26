@@ -1,0 +1,23 @@
+{
+  "name": "pumpkinsmemepicker",
+  "version": "1.0.0",
+  "description": "",
+  "main": "script.js",
+  "scripts": {
+    "dev": "parcel src/index.html",
+    "build": "parcel build src/index.html"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/iamsebastn/PumpkinsMemePicker.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/iamsebastn/PumpkinsMemePicker/issues"
+  },
+  "homepage": "https://github.com/iamsebastn/PumpkinsMemePicker#readme",
+  "devDependencies": {
+    "parcel": "^2.8.3"
+  }
+}
