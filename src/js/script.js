@@ -3,6 +3,16 @@ const emotionRadios = document.getElementById('emotion-radios')
 
 // console.log(travelLocations)
 
+emotionRadios.addEventListener("change", changeRadioState)
+
+function changeRadioState(e) {
+    const radios = document.getElementsByClassName("radio")
+    for(let radio of radios) {
+        radio.classList.remove("highlight")
+    }
+    document.getElementById(e.target.id).parentElement.classList.add("highlight")
+}
+
 function getWeatherArray(places) {
     const weatherArray = []
     for(let place of places) {
