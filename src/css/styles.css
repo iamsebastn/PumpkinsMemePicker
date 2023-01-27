@@ -116,10 +116,10 @@ label{
 }
 
 .highlight{
-    background-color: #fff0ee;
-    color: #bd301d;
+    background-color: #141313;
+    color: #eee9e9;
     font-weight: bold;
-    accent-color: #bd301d;
+    accent-color: #f5f0f0;
 }
 
 input[type="radio"]{
@@ -146,6 +146,7 @@ input[type="radio"]{
     border: none;
     border-radius: 5px;
     margin-bottom: 8px;
+    cursor: pointer;
 }
 
 /* modal */

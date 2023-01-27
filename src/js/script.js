@@ -77,9 +77,20 @@ const backgroundImages = [
         image: "https://images.unsplash.com/photo-1469474968028-56623f02e42e?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=2674&q=80",
         alt: "an awesome backgroundimage",
     },
+    {
+        imageTags: ["3D-Render", "abstract"],
+        isPortrait: true,
+        image: "https://images.unsplash.com/photo-1469474968028-56623f02e42e?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=2674&q=80",
+        alt: "an awesome backgroundimage",
+    },
 ]
 
 const tagsRadio = document.getElementById("emotion-radios")
+const getImageBtn = document.getElementById("get-image-btn")
+const modal = document.getElementById("meme-modal")
+const modalCloseBtn = document.getElementById("meme-modal-close-btn")
+let isPortraitImg = document.getElementById("portrait-only-option")
+const modalInner = document.getElementById('meme-modal-inner')
 
 tagsRadio.addEventListener("change", (e) => {
     const radios = document.getElementsByClassName("radio")
@@ -87,8 +98,53 @@ tagsRadio.addEventListener("change", (e) => {
         radio.classList.remove("highlight")
     }
     document.getElementById(e.target.id).parentElement.classList.add("highlight")
-    
+    checkForPortrait()
 })
+
+modalCloseBtn.addEventListener("click", () => {
+    modal.style.display = "none"
+})
+
+getImageBtn.addEventListener("click", () => {
+    const singleTag = getSingleTag()
+    console.log(singleTag.image)
+    modalInner.innerHTML = `
+        <img 
+        class="cat-img" 
+        src=”(${singleTag.image})”
+        alt="${singleTag.alt}"
+        >
+    `
+    modal.style.display = "flex"
+})
+
+function getSingleTag() {
+    const singleTag = getMatchingImageTag()
+    
+    if(singleTag.length === 1) {
+        return singleTag[0]
+    } else {
+        return singleTag[Math.floor(Math.random() * singleTag.length)]
+    }
+}
+
+function getMatchingImageTag() {
+    if(document.querySelector("input[type='radio']:checked")) {
+        const selectedTag = document.querySelector("input[type='radio']:checked").value
+        const isPortrait = isPortraitImg.checked
+
+        const matchingTagsArray = backgroundImages.filter(function(background){
+            if(isPortrait) {
+
+                return background.imageTags.includes(selectedTag) && background.isPortrait
+            } else {
+
+                return background.imageTags.includes(selectedTag)
+            }
+        })
+        return matchingTagsArray   
+    }
+}
 
 function getBackgroungImageArray(bgImages) {
     const bgImageArray = []
