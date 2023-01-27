@@ -1,8 +1,3 @@
-import { backgroundImages } from "./data.js";
+import { backgroundImages } from "./data";
+
 console.log(backgroundImages)
-
-// function getBackgroundImageArray() {
-//     console.log(backgroundImages)
-// }
-
-// getBackgroundImageArray()
