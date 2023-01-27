@@ -1,4 +1,13 @@
 import { backgroundImages } from "./data.js";
-const emotionRadios = document.getElementById('emotion-radios')
 
 // console.log(backgroundImages)
+
+function getBackgroundImagesArray(images) {
+    backgroundImageArray = []
+    for (let image of images) {
+        console.log(image)
+    }
+    // return backgroundImageArray
+}
+
+getBackgroundImagesArray(backgroundImages)
