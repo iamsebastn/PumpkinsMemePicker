@@ -78,3 +78,5 @@ export const backgroundImages = [
         alt: "an awesome backgroundimage",
     },
 ]
+
+console.log(backgroundImages.imageTags)
