@@ -1,4 +1,4 @@
-export const backgroundImages = [
+const backgroundImages = [
     {
         imageTags: ["editorial", "urban"],
         isPortrait: false,
